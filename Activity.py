@@ -1,9 +1,6 @@
 from Iodine import *
-<<<<<<< HEAD
 from BeautifulSoup import *
-=======
 from string import *
->>>>>>> daa6e74bd59c8c81f2b2db50d000bc300a5060fe
 class Activity:
 	"""
 	Activity defines an 8th period activity. It does this by taking a Block
@@ -23,11 +20,9 @@ class Activity:
 			# Complain.
 			raise IodineException("Error: There is no usable Authenticator.", "ERR_NOT_AUTHED")
 		self.bid = block.bid # Get the Block's bid
-<<<<<<< HEAD
 		if aid is not None: # If we got an AID...
 			self.aid = aid # Set it as a class variable
 			self.checkAid() # Do a sanity check, just to make sure it exists
-=======
 		self.authObj = authObj
 		self.url = "https://iodine.tjhsst.edu/eighth/vcp_schedule/choose/uid/" + authObj.uid + "/bids/" + self.bid
 		if aid is not None: # If we got an AID...
@@ -52,17 +47,13 @@ class Activity:
 		bid = self.bid
 		query = "https://iodine.tjhsst.edu/eighth/vcp_schedule/change/uid/" + self.authObj.uid + "/bids/" + self.bid + "?aid=" + self.aid
 		print ClientCookie.urlopen(query).read()
->>>>>>> daa6e74bd59c8c81f2b2db50d000bc300a5060fe
 	def checkAid(self):
 		"""
 		Called internally.
 		"""
-<<<<<<< HEAD
 		url = "https://iodine.tjhsst.edu/eighth/vcp_schedule/choose/uid/" + authObj.uid + "/bids/" + self.bid  # Construct a query URL
-=======
 		# Construct a query URL
 		url = self.url
->>>>>>> daa6e74bd59c8c81f2b2db50d000bc300a5060fe
 		eighthList = ClientCookie.urlopen(url) # Open it
 		eighths = eighthList.read() # Read it
 		if self.aid not in eighths: # If the activity doesn't exist
