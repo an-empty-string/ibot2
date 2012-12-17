@@ -28,7 +28,7 @@ class Block:
 			raise IodineException("Error: No arguments were passed in.", "ERR_NO_ARGS")
 		elif "bid" in kwargs: # If we get a block id...
 			# Don't complain
-			self.bid = str(bid)
+			self.bid = str(kwargs[bid])
 		elif "date" in kwargs and "block" in kwargs: # If we get a date...
 			# Don't go to homecoming, instead...
 			# Call getBidByDate
@@ -65,4 +65,4 @@ def getAllBids(authObj):
 	bids = {}
 	for i in lines:
 		bids[i] = 0
-	return bids.keys()
+	return [Block(authObj, bid=i) for i in bids.keys()]
