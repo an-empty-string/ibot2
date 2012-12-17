@@ -2,6 +2,11 @@ import ClientCookie
 import urllib
 import urllib2
 from Iodine import *
+<<<<<<< HEAD
+=======
+from IodineException import *
+from BeautifulSoup import *
+>>>>>>> daa6e74bd59c8c81f2b2db50d000bc300a5060fe
 class Authenticator:
 	"""
 	Authenticator is a class which interfaces with the Iodine authentication
@@ -48,4 +53,8 @@ class Authenticator:
 			self.uid = None # Set the uid to none.
 			self.isAuthenticated = False # No, no we are not.
 			print e
+<<<<<<< HEAD
 			raise Exception("Error in Authenticator: could not log in.") # Raise an exception.
+=======
+			raise IodineException("Error in Authenticator: could not log in.", "ERR_AUTHENTICATE_LOGIN") # Raise an IodineException
+>>>>>>> daa6e74bd59c8c81f2b2db50d000bc300a5060fe
