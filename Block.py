@@ -60,10 +60,9 @@ def getAllBids(authObj):
 	if authObj.isAuthenticated is not True:
 		raise IodineException("Not authenticated!", "ERR_NO_AUTH")
 	soup = BeautifulSoup(ClientCookie.urlopen("https://iodine.tjhsst.edu/eighth/vcp_attendance").read())
-	lines = soup.findAll('tr')
-	bids = []
+	lines = [repr(i) for i in soup.findAll('tr')]
+	lines = [i.split("/activity/bid/")[1].split('">')[0] for i in lines if "/activity/bid" in i]
+	bids = {}
 	for i in lines:
-		i = repr(i)
-		i.split("/activity/bid")[1].split('">')[0]
-		bids.append(i)
-	return bids
+		bids[i] = 0
+	return bids.keys()
